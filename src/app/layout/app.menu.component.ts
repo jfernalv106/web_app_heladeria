@@ -17,23 +17,23 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Caja',
                 items: [
-                    { label: 'Venta', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
-                    { label: 'Arqueo', icon: 'pi pi-fw pi-home', routerLink: ['/'] }
+                    { label: 'Venta', icon: 'pi pi-fw pi-cart-plus', routerLink: ['/caja/venta'] },
+                    { label: 'Arqueo', icon: 'pi pi-fw pi-calculator', routerLink: ['/caja/arqueo'] }
                 ]
             },
             {
                 label: 'Inventario',
                 items: [
-                    { label: 'Productos', icon: 'pi pi-fw pi-id-card', routerLink: ['/inventario/producto'] },
-                    { label: 'Stock', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
+                    { label: 'Productos', icon: 'pi pi-fw pi-box', routerLink: ['/inventario/producto'] },
+                    { label: 'Stock', icon: 'pi pi-fw pi-check-square', routerLink: ['/inventario/stock'] },
              
                 ]
             },
             {
                 label: 'administración',
                 items: [
-                    { label: 'Empleados', icon: 'pi pi-fw pi-eye', routerLink: ['/blocks'], badge: 'NEW' },
-                    { label: 'Asistencia', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
+                    { label: 'Empleados', icon: 'pi pi-fw pi-user-plus', routerLink: ['/administracion/usuarios'] },
+                    { label: 'Asistencia', icon: 'pi pi-fw pi-users', routerLink: ['administracion/asistencia'] },
                 ]
             },
            

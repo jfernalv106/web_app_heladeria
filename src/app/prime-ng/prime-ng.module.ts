@@ -6,6 +6,7 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {ButtonModule} from 'primeng/button';
 import {CheckboxModule} from 'primeng/checkbox';
 import {InputSwitchModule} from 'primeng/inputswitch';
+import {TableModule} from 'primeng/table';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {InputSwitchModule} from 'primeng/inputswitch';
     InputNumberModule,
     ButtonModule,
     CheckboxModule,
-    InputSwitchModule
+    InputSwitchModule,
+    TableModule
   ]
 })
 export class PrimeNgModule { }

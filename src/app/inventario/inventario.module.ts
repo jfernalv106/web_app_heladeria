@@ -5,12 +5,14 @@ import { InventarioRouteModule } from './inventario-route.module';
 import { NgModule } from '@angular/core';
 import { PrimeNgModule } from '../prime-ng/prime-ng.module';
 import { FormsModule } from '@angular/forms';
+import { StockComponent } from './stock/stock.component';
 
 
 
 @NgModule({
   declarations: [
-    ProductoComponent
+    ProductoComponent,
+    StockComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports:[
-    ProductoComponent
+    ProductoComponent,
+    StockComponent
   ]
 })
 export class InventarioModule { }

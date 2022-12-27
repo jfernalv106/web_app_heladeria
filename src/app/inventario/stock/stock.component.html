@@ -1,0 +1,50 @@
+
+<p-card header="Stock Productos">
+
+    <div class="grid formgrid p-fluid">
+        <div class="col-12 mb-12 lg:col-4 lg:mb-2 py-3">
+            <span class="p-float-label">
+                <input id="nombre" type="text" pInputText [(ngModel)]="nombre" >
+                <label for="nombre">nombre</label>
+            </span>
+        </div>
+        <div class="col-12 mb-12 lg:col-4 lg:mb-2 py-3">
+            <span class="p-float-label">
+                <input id="descripcion" type="text" pInputText [(ngModel)]="descripcion" >
+                <label for="descripcion">Descripción</label>
+            </span>
+        </div>
+ 
+
+        <p-button label="Buscar" icon="pi pi-search" iconPos="left"  (onClick)="buscar()" class="col-12 md:col-3 py-3" ></p-button>
+    </div>
+
+   
+</p-card>
+<br>
+<div class="card">
+    <p-table [value]="productos" [tableStyle]="{'min-width': '50rem'}">
+     
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th>Nombre </th>
+                <th>Precio</th>
+                <th>Stock</th>
+                <th>descripción</th>
+                <th>Inventariable</th>
+              
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product let-columns="columns">
+            <tr>
+                <td>{{product.nombre}}</td>
+                <td>{{product.precio | currency:'USD'}}</td>
+                <td>{{product.stock}}</td>
+                <td>{{product.descripcion}}</td>
+                <td>{{product.inventariable}}</td>
+              
+                
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
