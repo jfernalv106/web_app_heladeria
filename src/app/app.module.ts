@@ -6,6 +6,7 @@ import { AppLayoutModule } from './layout/app.layout.module';
 
 import { InventarioRouteModule } from './inventario/inventario-route.module';
 import { AdministracionRouteModule } from './administracion/administracion-route.module';
+import { CajaRouteModule } from './caja/caja-route.module';
 
 @NgModule({
     declarations: [
@@ -16,7 +17,9 @@ import { AdministracionRouteModule } from './administracion/administracion-route
         AppLayoutModule,
 
         InventarioRouteModule,
-        AdministracionRouteModule
+        AdministracionRouteModule,
+        CajaRouteModule,
+        
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },

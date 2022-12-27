@@ -8,7 +8,8 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
             {
                 path: '', component: AppLayoutComponent,
                 children: [
-                    { path: '', loadChildren: () => import('./inventario/inventario.module').then(m => m.InventarioModule) },
+                    { path: 'inventario', loadChildren: () => import('./inventario/inventario.module').then(m => m.InventarioModule) },
+                   
 
                 ]
             },

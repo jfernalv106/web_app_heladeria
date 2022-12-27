@@ -1,1 +1,49 @@
-<p>producto works!</p>
+<p-card header="Producto">
+
+
+
+
+
+
+    <div class="grid formgrid p-fluid">
+        <div class="col-12 mb-12 lg:col-4 lg:mb-2 py-3">
+            <span class="p-float-label">
+                <input id="nombre" type="text" pInputText [(ngModel)]="producto.nombre" >
+                <label for="nombre">nombre</label>
+            </span>
+        </div>
+        <div class="col-12 mb-12 lg:col-4 lg:mb-2 py-3">
+            <span class="p-float-label">
+                <input id="descripcion" type="text" pInputText [(ngModel)]="producto.descripcion" >
+                <label for="descripcion">Descripción</label>
+            </span>
+        </div>
+        <div class="col-12 mb-12 lg:col-4 lg:mb-2 py-3">
+            <span class="p-float-label">
+                <input id="tipo" type="text" pInputText [(ngModel)]="producto.tipo" >
+                <label for="tipo">Tipo</label>
+            </span>
+        </div>
+        <div class="col-12 mb-12 lg:col-4 lg:mb-2 py-3 ">
+            <span class="p-float-label">
+                <p-inputNumber id="precio" [(ngModel)]="producto.precio"  ></p-inputNumber>
+                <label for="precio">Precio</label>
+            </span>
+        </div>
+        <div class="field col-12 md:col-3 py-3">
+            <span class="p-float-label">
+                <p-inputNumber id="stock" [(ngModel)]="producto.stock"  ></p-inputNumber>
+                <label for="stock">Stock</label>
+            </span>
+        </div>
+        <div class="field col-12 md:col-3 py-3 grid formgrid p-fluid">
+            
+                Inventariable 
+            <p-inputSwitch id="inventariable" [(ngModel)]="producto.inventariable"></p-inputSwitch>
+            
+        </div>
+        <p-button label="Guardar" icon="pi pi-save" iconPos="left"  (onClick)="guardar()" class="col-12 md:col-3 py-3" ></p-button>
+    </div>
+
+
+</p-card>
