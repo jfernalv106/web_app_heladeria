@@ -2,14 +2,17 @@
     <div class="col-12 mb-12 lg:col-12 lg:mb-2 py-3">
         <p-card>
             <div class="grid formgrid p-fluid">
-                <div class="col-12 mb-12 lg:col-9 lg:mb-2 py-3">
-                    <span class="p-float-label">
-                        <input id="nombre" type="text" pInputText [(ngModel)]="nombreProducto">
-                        <label for="nombre">articulo</label>
-                    </span>
+                <div class="col-12 mb-12 lg:col-12 lg:mb-2 py-3">
+                    <p-autoComplete [(ngModel)]="producto" [suggestions]="sugerencias" (completeMethod)="autoComplete($event)" field="name" [dropdown]="true" (onSelect)="agregar(producto)">
+                        <ng-template let-prod pTemplate="item">
+                            <div class="country-item">
+                                <div>{{prod.nombre}}</div>
+                                <div>{{prod.precio | currency:'USD'}}</div>
+                            </div>
+                        </ng-template>
+                    </p-autoComplete>
                 </div>
-                <p-button label="Agregar" icon="pi pi-plus" iconPos="left" (onClick)="agregar()"
-                    class="col-12 md:col-3 py-3"></p-button>
+               
             </div>
         </p-card>
 

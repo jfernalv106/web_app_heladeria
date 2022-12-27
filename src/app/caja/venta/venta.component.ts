@@ -11,8 +11,10 @@ export class VentaComponent implements OnInit {
     total: number = 0;
     iva: number = 0;
     neto: number = 0;
+    producto:Producto={};
 
     carrito: Producto[] = [];
+    sugerencias: Producto[] = [];
 
     nombreProducto: string = '';
 
@@ -22,21 +24,15 @@ export class VentaComponent implements OnInit {
         console.log('Venta');
     }
 
-     agregar() {
-        this.inventarioService.buscarProducto('', true, '', 0, 0).subscribe(
-            (prod) => {
-                this.carrito = prod.productos ?? [];
-                this.calcular();
-                
-              },
-              (err) => {
-                this.carrito = [];
-                this.calcular();
-            }
-        );
+     agregar(prod:Producto) {
+
+      console.log(prod);
+      console.log('La Wea');
+        this.carrito.push(prod);
+        this.calcular();
     }
-    quitar(producto: Producto) {
-      this.carrito=this.carrito.filter((i) => i !== producto);
+    quitar(pr: Producto) {
+      this.carrito=this.carrito.filter((i) => i !== pr);
       this.calcular();
     }
     calcular() {
@@ -50,4 +46,24 @@ export class VentaComponent implements OnInit {
           this.neto = parseInt(`${this.total * 0.89}`);
           console.log(this.total);
     }
+
+    autoComplete(event:any) {
+      //in a real application, make a request to a remote url with the query and return filtered results, for demo we filter at client side
+      let filtered : Producto[] = [];
+      let query = event.query;
+      this.inventarioService.buscarProducto(query, true, '', 0, 0).subscribe(
+        (prod) => {
+          filtered = prod.productos ?? [];
+          this.sugerencias = filtered;
+            
+            
+          },
+          (err) => {
+           // filtered = [];
+           
+        }
+    );
+   
+
+  }
 }

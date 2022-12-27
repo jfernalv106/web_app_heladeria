@@ -7,7 +7,7 @@ import {ButtonModule} from 'primeng/button';
 import {CheckboxModule} from 'primeng/checkbox';
 import {InputSwitchModule} from 'primeng/inputswitch';
 import {TableModule} from 'primeng/table';
-
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 @NgModule({
   imports: [
@@ -20,7 +20,8 @@ import {TableModule} from 'primeng/table';
     ButtonModule,
     CheckboxModule,
     InputSwitchModule,
-    TableModule
+    TableModule,
+    AutoCompleteModule
   ]
 })
 export class PrimeNgModule { }

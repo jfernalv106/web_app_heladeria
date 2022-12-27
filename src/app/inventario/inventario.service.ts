@@ -14,14 +14,16 @@ export class InventarioService {
 
   buscarProducto(nombre: string,inventariable:boolean,descripcion:string,min:number,max:number): Observable<Productos> {
 
+    let url = `${urlRest}api/producto?`;
     // let nombre = req.query.nombre;
     // let inventariable = req.query.inventariable;
     // let descripcion = req.query.descripcion;
     // let precioMin = req.query.precioMin;
     // let precioMax = req.query.precioMax;
+if(nombre!=''){
+url=url+'nombre='+nombre;
+}
 
-
-    const url = `${urlRest}api/producto`;
     return this.http.get<Productos>(url);
 
   }
