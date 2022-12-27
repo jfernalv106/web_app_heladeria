@@ -14,4 +14,5 @@ export interface Producto {
     volumen?:       number;
     peso?:          number;
     inventariable?: boolean;
+    codigo?:        string;
 }
