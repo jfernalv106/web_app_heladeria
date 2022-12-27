@@ -3,7 +3,9 @@
         <p-card>
             <div class="grid formgrid p-fluid">
                 <div class="col-12 mb-12 lg:col-12 lg:mb-2 py-3">
-                    <p-autoComplete [(ngModel)]="producto" [suggestions]="sugerencias" (completeMethod)="autoComplete($event)" field="name" [dropdown]="true" (onSelect)="agregar(producto)">
+                    <p-autoComplete [(ngModel)]="producto" [suggestions]="sugerencias"
+                        (completeMethod)="autoComplete($event)" field="name" [dropdown]="true"
+                        (onSelect)="agregar(producto)">
                         <ng-template let-prod pTemplate="item">
                             <div class="country-item">
                                 <div>{{prod.nombre}}</div>
@@ -12,7 +14,7 @@
                         </ng-template>
                     </p-autoComplete>
                 </div>
-               
+
             </div>
         </p-card>
 
@@ -79,10 +81,22 @@
         </p-card>
     </div>
 </div>
+
 <div class="grid formgrid p-fluid">
     <div class="col-12 mb-12 lg:col-12 lg:mb-2 py-3">
-        <p-card>
-
+        <p-card >
+            <div class="grid formgrid p-fluid">
+                <div class="col-12 mb-9 lg:col-9 lg:mb-2 py-3">
+                    <span class="p-float-label">
+                        <p-inputNumber id="descuento" [(ngModel)]="descuento"  ></p-inputNumber>
+                        <label for="descuento">Descuento</label>
+                    </span>
+                </div>
+                <div class="col-10 mb-3 lg:col-3 lg:mb-3 py-3" style="align-items: center;">
+                    <p-button label="Pagar" icon="pi pi-save" iconPos="left"  (onClick)="pagar()"  ></p-button>
+                </div>
+               
+            </div>
         </p-card>
 
     </div>
