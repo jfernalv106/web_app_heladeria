@@ -30,8 +30,9 @@
                     <tr>
                         <th>Nombre </th>
                         <th>Precio</th>
-
+                        
                         <th>descripción</th>
+                        <th>cantidad</th>
                         <th>eliminar</th>
 
                     </tr>
@@ -42,6 +43,7 @@
                         <td>{{product.precio | currency:'USD'}}</td>
 
                         <td>{{product.descripcion}}</td>
+                        <td>cantidad</td>
                         <td><button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
                                 (click)="quitar(product)"></button></td>
 
