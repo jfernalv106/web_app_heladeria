@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { InventarioService } from 'src/app/inventario/inventario.service';
+import Swal from 'sweetalert2';
 import { Producto } from '../../inventario/interfaces-inventario';
+import { CajaService } from '../caja.service';
+import { Venta } from '../interfaces-caja';
 
 @Component({
     selector: 'app-venta',
@@ -11,23 +14,24 @@ export class VentaComponent implements OnInit {
     total: number = 0;
     iva: number = 0;
     neto: number = 0;
-    descuento:number=0;
+    descuento: number = 0;
     producto: Producto = {};
 
     carrito: Producto[] = [];
+    venta: Venta;
     sugerencias: Producto[] = [];
 
     nombreProducto: string = '';
 
-    constructor(private inventarioService: InventarioService) {}
-
+    constructor(private inventarioService: InventarioService,private cajaService:CajaService) {
+        this.venta = { venta_detalle: [] };
+    }
     ngOnInit(): void {
-        console.log('Venta');
+        throw new Error('Method not implemented.');
     }
 
     agregar(prod: Producto) {
-        console.log(prod);
-        console.log('La Wea');
+        prod.cantidad = 1;
         this.carrito.push(prod);
         this.calcular();
     }
@@ -35,17 +39,16 @@ export class VentaComponent implements OnInit {
         this.carrito = this.carrito.filter((i) => i !== pr);
         this.calcular();
     }
-    test(valor:any){
-console.log(valor);
-    }
+
     calcular() {
         this.total = 0;
         this.iva = 0;
         this.neto = 0;
         for (const compra of this.carrito) {
-            this.total += parseInt(compra.precio ?? '1')*(compra.cantidad??1);
+            this.total +=
+                parseInt(compra.precio ?? '1') * (compra.cantidad ?? 1);
         }
-        this.total=this.total-this.descuento;
+        this.total = this.total - this.descuento;
         this.iva = parseInt(`${this.total * 0.19}`);
         this.neto = parseInt(`${this.total * 0.89}`);
         console.log(this.total);
@@ -65,7 +68,42 @@ console.log(valor);
             }
         );
     }
-    pagar(){
-        
+    pagar() {
+        this.venta = {
+            descripcion: '',
+            descuento: this.descuento,
+            estado: 'VALIDA',
+            fecha_entrega: new Date(),
+            fecha_venta: new Date(),
+            rut_usuario: '11111-1',
+            sucursal: 1,
+            total: this.total,
+            venta_detalle: [],
+        };
+        this.carrito?.forEach(async (arc) => {
+            this.venta.venta_detalle?.push({
+                producto: arc.id,
+                cantidad: arc.cantidad,
+            });
+        });
+
+        this.cajaService.guardaVenta(this.venta).subscribe(
+            (rb) => {
+              Swal.fire(
+                'Registrada',
+                'Venta realizada.',
+                'success'
+              );
+              this.producto={sucursal:"1",imagen:''};
+            
+            },
+            (err) => {
+            Swal.fire(
+                '¡Aviso!',
+                'ha ocurrido un error al generar la venta.',
+                'warning'
+              )
+            }
+          );
     }
 }

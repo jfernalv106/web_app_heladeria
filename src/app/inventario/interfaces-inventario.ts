@@ -3,7 +3,7 @@ export interface Productos {
 }
 
 export interface Producto {
-    id?: string;
+    id?: number;
     nombre?: string;
     descripcion?: string;
     tipo?: string;
