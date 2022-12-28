@@ -22,7 +22,7 @@
 </div>
 <div class="grid formgrid p-fluid">
 
-    <div class="col-12 mb-12 lg:col-9 lg:mb-2 py-3">
+    <div class="col-12 mb-12 lg:col-8 lg:mb-2 py-3">
         <p-card>
             <p-table [value]="carrito" [tableStyle]="{'min-width': '50rem'}">
 
@@ -43,7 +43,13 @@
                         <td>{{product.precio | currency:'USD'}}</td>
 
                         <td>{{product.descripcion}}</td>
-                        <td>cantidad</td>
+                        <td>
+                      
+                            <p-inputNumber style="width: 160px;" [(ngModel)]="product.cantidad" [showButtons]="true" buttonLayout="horizontal"  spinnerMode="horizontal" [step]="1" (onBlur)="calcular()"
+                            decrementButtonClass="p-button-danger" incrementButtonClass="p-button-success" incrementButtonIcon="pi pi-plus" decrementButtonIcon="pi pi-minus" [min]="1" (onInput)="calcular()" (onKeyDown)="calcular()" >
+                            </p-inputNumber>
+
+                        </td>
                         <td><button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
                                 (click)="quitar(product)"></button></td>
 
@@ -54,11 +60,19 @@
             </p-table>
         </p-card>
     </div>
-    <div class="col-12 mb-12 lg:col-3 lg:mb-2 py-3">
+    <div class="col-12 mb-12 lg:col-4 lg:mb-2 py-3">
         <p-card>
             <div class="grid formgrid p-fluid">
                 <div class="col-12 mb-12 lg:col-4 lg:mb-2 py-3">
-                    <h3>Neto</h3>
+                    <h3>Descuento:</h3>
+                </div>
+                <div class="col-12 mb-12 lg:col-6 lg:mb-2 py-3">
+                    <h4>{{descuento | currency:'$'}}</h4>
+                </div>
+            </div>
+            <div class="grid formgrid p-fluid">
+                <div class="col-12 mb-12 lg:col-4 lg:mb-2 py-3">
+                    <h3>Neto:</h3>
                 </div>
                 <div class="col-12 mb-12 lg:col-6 lg:mb-2 py-3">
                     <h4>{{neto | currency:'$'}}</h4>
@@ -66,7 +80,7 @@
             </div>
             <div class="grid formgrid p-fluid">
                 <div class="col-12 mb-12 lg:col-4 lg:mb-2 py-3">
-                    <h3>IVA</h3>
+                    <h3>IVA:</h3>
                 </div>
                 <div class="col-12 mb-12 lg:col-6 lg:mb-2 py-3">
                     <h4>{{iva | currency:'$'}}</h4>
@@ -74,7 +88,7 @@
             </div>
             <div class="grid formgrid p-fluid">
                 <div class="col-12 mb-12 lg:col-4 lg:mb-2 py-3">
-                    <h3>Total</h3>
+                    <h3>Total:</h3>
                 </div>
                 <div class="col-12 mb-12 lg:col-6 lg:mb-2 py-3">
                     <h4>{{total | currency:'$' }}</h4>
@@ -90,7 +104,7 @@
             <div class="grid formgrid p-fluid">
                 <div class="col-12 mb-9 lg:col-9 lg:mb-2 py-3">
                     <span class="p-float-label">
-                        <p-inputNumber id="descuento" [(ngModel)]="descuento"  ></p-inputNumber>
+                        <p-inputNumber id="descuento" [(ngModel)]="descuento" (onBlur)="calcular()" (onInput)="calcular()" ></p-inputNumber>
                         <label for="descuento">Descuento</label>
                     </span>
                 </div>

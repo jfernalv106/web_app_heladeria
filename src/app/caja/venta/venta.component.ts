@@ -35,13 +35,17 @@ export class VentaComponent implements OnInit {
         this.carrito = this.carrito.filter((i) => i !== pr);
         this.calcular();
     }
+    test(valor:any){
+console.log(valor);
+    }
     calcular() {
         this.total = 0;
         this.iva = 0;
         this.neto = 0;
         for (const compra of this.carrito) {
-            this.total += parseInt(compra.precio ?? '0');
+            this.total += parseInt(compra.precio ?? '1')*(compra.cantidad??1);
         }
+        this.total=this.total-this.descuento;
         this.iva = parseInt(`${this.total * 0.19}`);
         this.neto = parseInt(`${this.total * 0.89}`);
         console.log(this.total);
